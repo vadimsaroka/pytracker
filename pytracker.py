@@ -1,20 +1,10 @@
+from subprocess import Popen
 import datetime
 from bs4 import BeautifulSoup
 import requests
 from time import sleep
 import smtplib
-from params import HEADERS, URLS, EMAIL, PASSWORD, EMAIL2
-
-
-class Bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+from params import HEADERS, URLS, EMAIL, PASSWORD, EMAIL2, Bcolors
 
 
 def send_mail(url):
@@ -60,19 +50,34 @@ def check():
             print(f"{Bcolors.HEADER}{title_handler(title)}{Bcolors.ENDC}\n"
                   f"{Bcolors.OKBLUE}Date: {datetime.datetime.now()}{Bcolors.ENDC}"
                   f"{Bcolors.OKBLUE}\nCurrent price: {Bcolors.BOLD}${price}{Bcolors.ENDC}{Bcolors.ENDC}"
-                  f"{Bcolors.OKBLUE}vs desirable price: {Bcolors.BOLD}${s[1]}{Bcolors.ENDC}{Bcolors.ENDC}"
+                  f"{Bcolors.OKBLUE} vs desirable price: {Bcolors.BOLD}${s[1]}{Bcolors.ENDC}{Bcolors.ENDC}"
                   f"{Bcolors.OKBLUE} \n{Bcolors.UNDERLINE}{s[0]}{Bcolors.ENDC}{Bcolors.ENDC}\n")
         if price <= s[1]:
             send_mail(s[0])
 
 
-while True:
-    try:
-        check()
-    except AttributeError as e:
-        print(f"{Bcolors.FAIL}{e}{Bcolors.ENDC}")
-        print(f"{Bcolors.WARNING}Probably, you will need to reduce the number of requests to Amazon, "
-              f"in order not to be blocked as a bot.{Bcolors.ENDC}\n")
-        sleep(30)
-        continue
-    sleep(3600)
+def run_script():
+    while True:
+        try:
+            check()
+        except AttributeError as e:
+            print(f"{Bcolors.FAIL}{e}{Bcolors.ENDC}")
+            print(f"{Bcolors.WARNING}Probably, you will need to reduce the number of requests to Amazon, "
+                  f"in order not to be blocked as a bot.{Bcolors.ENDC}\n")
+            sleep(30)
+            continue
+        sleep(3600)
+
+
+if __name__ == "__main__":
+    print(f"{Bcolors.OKGREEN}The program has been started!{Bcolors.ENDC}")
+    while True:
+        sleep(15)
+        try:
+            run_script()
+        except Exception as e:
+            print(f"{Bcolors.FAIL}The program is crashed!\n {e}{Bcolors.ENDC}")
+        finally:
+            print(f"{Bcolors.WARNING}Restarting...{Bcolors.ENDC}")
+            p = Popen(f"python3 " + "pytracker.py", shell=True)
+            p.wait()

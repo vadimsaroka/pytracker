@@ -3,11 +3,22 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gec
            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT": "1",
            "Connection": "close", "Upgrade-Insecure-Requests": "1"}
 
-EMAIL = "vadim.codes@gmail.com"
-PASSWORD = "4RZVKmuWamvi"
 
-EMAIL2 = "vsi87@mail.ru"
+class Bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
+
+EMAIL = "email@gmail.com"
+PASSWORD = "password"
+
+EMAIL2 = "email2@gmail.com"
 
 """
 URLS: copy/paste a complete URL from AMAZON that you want to track
