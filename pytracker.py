@@ -54,7 +54,7 @@ def check():
         page = requests.get(s[0], headers=HEADERS)
         sleep(60)
         soup = BeautifulSoup(page.content, "html.parser")
-        price = float(str(soup.find(id="price_inside_buybox").text).split("$")[1])
+        price = float(str(soup.find(id="newBuyBoxPrice").text).split("$")[1])
         title = str(soup.find(id='productTitle').text).strip()
         if price and title:
             print(f"{Bcolors.HEADER}{title_handler(title)}{Bcolors.ENDC}\n"

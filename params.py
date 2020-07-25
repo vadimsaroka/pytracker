@@ -3,10 +3,10 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gec
            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8", "DNT": "1",
            "Connection": "close", "Upgrade-Insecure-Requests": "1"}
 
-EMAIL = "test@gmail.com"
-PASSWORD = "password"
+EMAIL = "vadim.codes@gmail.com"
+PASSWORD = "4RZVKmuWamvi"
 
-EMAIL2 = "test2@gmail.com"
+EMAIL2 = "vsi87@mail.ru"
 
 
 """
